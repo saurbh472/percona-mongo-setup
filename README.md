@@ -7,15 +7,15 @@ Basic Commands:
 - Start the container in detached mode
      - docker compose up -d
 - List running containers
-     docker ps
+     - docker ps
 - Access the container's bash terminal
-     docker exec -it <container_id> /bin/bash
+     - docker exec -it <container_id> /bin/bash
 - Check existing Docker volumes
-     docker volume ls
+     - docker volume ls
 - Delete a specific Docker volume
-     docker volume rm <volume_name>
+     - docker volume rm <volume_name>
 - Stop and remove the container stack
-     docker compose down
+     - docker compose down
 💡 Key Points:
 Use the docker-compose.yml file to define services, volumes, and networks for MongoDB.
 Ensure that persistent storage is set up with named volumes to avoid data loss.
