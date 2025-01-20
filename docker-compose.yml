@@ -1,0 +1,35 @@
+services:
+  autoheal:
+    restart: always
+    image: willfarrell/autoheal
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    command: ["mongod", "--bind_ip_all", "--replSet", "rs0"] #--bind_ip 0.0.0.0
+    volumes:
+      - mongodbdata:/data/db
+      - mongodbdata:/data/configdb
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /home/$USER/path of file/init.sh:/usr/local/bin/init.sh
+      - /data/backup:/data/backup
+    entrypoint: ["/usr/local/bin/init.sh"]
+    expose:
+      - "27017/udp"
+      - "27017/tcp"
+    ports:
+      - "27017:27017/udp"
+      - "27017:27017/tcp"
+    networks:
+      default:
+        ipv4_address: localhost
+    restart: unless-stopped
+networks:
+  default:
+    external: true
+volumes:
+  mongodbdata: {}
