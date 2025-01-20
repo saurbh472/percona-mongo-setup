@@ -5,7 +5,7 @@ Step 1: Handling Docker for MongoDB
 Basic Commands:
 
 - Start the container in detached mode
-     docker compose up -d
+     - docker compose up -d
 - List running containers
      docker ps
 - Access the container's bash terminal
